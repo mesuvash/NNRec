@@ -1,0 +1,23 @@
+data:
+    train: /Users/suvashsedhain/Desktop/90folds/train.flipped.1
+    test: /Users/suvashsedhain/Desktop/90folds/test.flipped.1
+    save: /Users/suvashsedhain/Desktop/90folds/model_noneighbor_%d_%.2f.1
+params:
+    reg_bias: True
+    lamda: 0.1
+    learn_rate: 0.0001
+    max_iter: 200
+    batch_size: 1000
+    k : 5
+layers:
+    1:
+        activation: sigmoid
+        num_nodes: 30200
+        partial: True
+        type: input
+    2:
+        activation: identity
+        num_nodes: 500
+        partial: False
+        type: hidden
+        binary: True

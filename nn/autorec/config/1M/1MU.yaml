@@ -1,0 +1,32 @@
+data:
+    train: /Users/suvashsedhain/Desktop/90folds/train.%d
+    test: /Users/suvashsedhain/Desktop/90folds/test.%d 
+    save: /Users/suvashsedhain/Desktop/90folds/model_noneighbor_%d_%.2f.%d
+params:
+    reg_bias: False
+    beta: None
+    lamda: [200.0,200.0]
+    mean_normalization: False
+    pretraining: False
+    max_iter: [500]
+    batch_size: 10000
+    optimizer: rprop
+layers:
+    1:
+        activation: identity
+        num_nodes: 3706
+        partial: False
+        type: input
+    2:
+        activation: sigmoid
+        num_nodes: 500
+        partial: False
+        type: hidden
+        binary: True
+    3:
+        activation: identity
+        num_nodes: 3706
+        partial: True
+        type: output
+
+

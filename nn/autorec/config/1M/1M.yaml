@@ -1,0 +1,32 @@
+data:
+    train: /Users/suvashsedhain/Desktop/90folds/train.flipped.1
+    test: /Users/suvashsedhain/Desktop/90folds/test.flipped.1
+    save: /Users/suvashsedhain/Desktop/90folds/model.1
+params:
+    reg_bias: False
+    beta: None
+    lamda: [200.0,200.0]
+    mean_normalization: False
+    pretraining: False
+    max_iter: [500]
+    batch_size: 10000
+    optimizer: lbfgs
+layers:
+    1:
+        activation: identity
+        num_nodes: 6040
+        partial: False
+        type: input
+    2:
+        activation: sigmoid
+        num_nodes: 500
+        partial: False
+        type: hidden
+        binary: True
+    3:
+        activation: identity
+        num_nodes: 6040
+        partial: True
+        type: output
+
+
