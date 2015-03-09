@@ -41,8 +41,8 @@ All the models are defined in yaml configuration file. Configuraiton file consis
 Installation
 ============
 
-First you will need to build the cython modules. Build cython modules 
-$ bash buildCython.sh 
+First you will need to build the cython modules. Build cython modules by running following command
+* bash buildCython.sh 
 
 Running Code
 =============
