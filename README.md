@@ -44,9 +44,6 @@ Installation
 First you will need to build the cython modules. Build cython modules by running following command
 * bash buildCython.sh 
 
-Running Code
-=============
-
 Running Autorec model
 * cd nn/autorec
 * PYTHONPATH=\<NNRec_PATH\> python learner.py -c \<CONF_PATH\>
