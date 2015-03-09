@@ -35,7 +35,7 @@ All the models are defined in yaml configuration file. Configuraiton file consis
 		+ **activation**: Type of activation function (identity, sigmoid, relu, nrelu, tanh)
 		+ **num_nodes**: number of nodes in the given layer
 		+ **type**: layer type (input, hidden, output)
-		+ **partial**: whether the layer data is partially observed(applicable only to input/output nodes)
+		+ **partial**: whether the data in the given layer is partially observed or not (applicable only to input/output nodes)
 		+ **binary** : whether to enforce binary coding in the layer or not
 
 Installation
