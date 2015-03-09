@@ -38,8 +38,8 @@ All the models are defined in yaml configuration file. Configuraiton file consis
 		+ **partial**: whether the data in the given layer is partially observed or not (applicable only to input/output nodes)
 		+ **binary** : whether to enforce binary coding in the layer or not
 
-Installation
-============
+Installation/Running
+====================
 
 First you will need to build the cython modules. Build cython modules by running following command
 * bash buildCython.sh 
