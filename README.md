@@ -4,9 +4,9 @@ RBM based collaborative filtering model(RBM-CF).
 
 Dependencies
 ============
-* Cython
-* Progressbar
-* Envoy
+* cython
+* progressbar
+* envoy
 * climin
 
 
