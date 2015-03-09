@@ -49,11 +49,11 @@ Running Code
 
 Running Autorec model
 * cd nn/autorec
-* PYTHONPATH=<path_to_NNRec_folder> python learner.py -c <path_to_configuration_file>
+* PYTHONPATH=path_to_NNRec_folder python learner.py -c path_to_configuration_file
 
 Running RBMCF model
 * cd nn/cfrbm
-* PYTHONPATH=<path_to_NNRec_folder> python learner.py -c <path_to_configuration_file>
+* PYTHONPATH=path_to_NNRec_folder python learner.py -c path_to_configuration_file
 
 
 
