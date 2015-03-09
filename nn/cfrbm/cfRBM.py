@@ -79,6 +79,7 @@ class RBM(object):
     def predict(self, train, test, normalize=True):
         hidden = self.getHiddenActivation(train)
         visible = self.getVisibleActivation(hidden, test)
+        # visible = np.exp(visible)
         if normalize:
             prediction = self.__binary2Ratings(visible)
         else:
@@ -156,8 +157,7 @@ class RbmOptimizer(object):
         dv_old = np.zeros(self.nn.layers[0].bias.shape)
         dh_old = np.zeros(self.nn.layers[1].bias.shape)
         evaluate = EvaluateRBM(self.RBM)
-        # traindata = train.data
-        # testdata = test.data
+
 
         m, n = train.shape
         batches = range(0, m, batch_size)

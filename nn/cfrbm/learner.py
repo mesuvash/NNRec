@@ -32,10 +32,14 @@ def train(config_path):
     del train
     model = RBM(nn, modelArgs)
     optimizer = RbmOptimizer(model)
-    optimizer.minibatchTrain(bintrain, bintest, test, modelargs.batch_size)
+    optimizer.minibatchTrain(bintrain, bintest, test, modelArgs.batch_size)
 
 
 if __name__ == '__main__':
-    import sys
-    config_path = sys.argv[1]
+    import argparse
+    parser = argparse.ArgumentParser(description='Description')
+    parser.add_argument(
+        '--config', '-c', help='configuration file', required=True)
+    args = parser.parse_args()
+    config_path = args.config
     train(config_path)

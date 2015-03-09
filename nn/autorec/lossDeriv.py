@@ -3,7 +3,7 @@ import scipy.sparse
 from nn.blocks.cython_activations import *
 from cython_matmul import *
 from nn.blocks.nn import LayerType
-from sklearn.utils import shuffle
+# from sklearn.utils import shuffle
 from copy import deepcopy
 
 
@@ -213,7 +213,7 @@ def getCostDeriv(theta, user_item_rating, NN,
 def getCostDerivBatch(theta, user_item_rating, NN,
                       modelArg, counter, batch_size):
     counter.increment()
-    user_item_rating = shuffle(user_item_rating)
+    # user_item_rating = shuffle(user_item_rating)
     ##################################### Unrolling/ Initialization ##########
     weights = []
     for i in range(len(NN.weights_limit) - 1):
@@ -293,7 +293,7 @@ def updateSGD(user_item_rating, NN, modelArg, counter, batch_size,
               alpha, dWeights_old, dBiases_old):
     counter.increment()
 
-    user_item_rating = shuffle(user_item_rating)
+    # user_item_rating = shuffle(user_item_rating)
     weights = NN.weights
     biases = NN.biases
 
@@ -373,7 +373,7 @@ def updateAdagrad(user_item_rating, NN, modelArg, counter, batch_size,
                   alpha, dWeights_old, dBiases_old):
     counter.increment()
 
-    user_item_rating = shuffle(user_item_rating)
+    # user_item_rating = shuffle(user_item_rating)
     weights = NN.weights
     biases = NN.biases
 
@@ -465,7 +465,8 @@ def trainSGD(train, test, num_iter, evaluate, weights, biases, learn_rate, model
         dBiases_old.append(np.zeros(shape=bias.shape))
 
     for i in range(num_iter):
-        t = shuffle(train)
+        # t = shuffle(train)
+        t = train
         dWeights_old, dBiases_old = updateSGD(t, NN, modelArg, counter,
                                               batch_size, learn_rate,
                                               dWeights_old, dBiases_old)
@@ -504,7 +505,8 @@ def trainAdagrad(train, test, num_iter, evaluate, weights, biases, learn_rate, m
         dBiases_old.append(np.zeros(shape=bias.shape))
 
     for i in range(num_iter):
-        t = shuffle(train)
+        # t = shuffle(train)
+        t = trian
         dWeights_old, dBiases_old = updateAdagrad(t, NN, modelArg, counter,
                                                   batch_size, learn_rate,
                                                   dWeights_old, dBiases_old)

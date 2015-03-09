@@ -36,6 +36,8 @@ class NetworkConfigParser(object):
                 kwargs["mean"] = params["mean_normalization"]
             if "learn_rate" in params:
                 kwargs["learn_rate"] = params["learn_rate"]
+            if "num_threads" in params:
+                kwargs["num_threads"] = params["num_threads"]
             kwargs["lamda"] = params["lamda"]
             kwargs["max_iter"] = params["max_iter"]
             if "optimizer" in params:

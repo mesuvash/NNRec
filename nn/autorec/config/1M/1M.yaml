@@ -11,6 +11,7 @@ params:
     max_iter: [500]
     batch_size: 10000
     optimizer: lbfgs
+    num_threads: 16
 layers:
     1:
         activation: identity

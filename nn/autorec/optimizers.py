@@ -1,7 +1,7 @@
 import scipy.optimize
 from climin import *
 import itertools
-from sklearn.utils import shuffle
+# from sklearn.utils import shuffle
 from lossDeriv import *
 
 
@@ -54,7 +54,7 @@ class LBFGS(object):
                                                jac = True, callback=cbk,
                                                options =
                                                {'maxiter': self.max_iter,
-                                                "disp": True})
+                                                "disp": 0})
 
         opt_theta = opt_solution.x
         self.ae.setParameters(opt_theta)
@@ -68,7 +68,7 @@ def getMiniBatchParamsIterator(train, nn, modelArgs, iterCounter,
     if batches[-1] != m:
         batches.append(m)
     while True:
-        train = shuffle(train)
+        # train = shuffle(train)
         for i in range(len(batches) - 1):
             start = batches[i]
             end = batches[i + 1]

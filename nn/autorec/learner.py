@@ -17,8 +17,7 @@ def train(config_path):
     num_hid = nn.layers[1].num_units
     shape = (None, nn.layers[0].num_units)
     train, test, cold = loadTrainTest(train_path, test_path,
-                                      shape=shape, implicit=False,
-                                      temporal=False)
+                                      shape=shape)
 
     ae = AE(nn, modelArgs)
     evaluate = EvaluateNN(ae)
@@ -57,4 +56,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     config_path = args.config
     i = 1
-    train(i, config_path)
+    train(config_path)

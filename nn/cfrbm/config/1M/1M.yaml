@@ -1,13 +1,13 @@
 data:
-    train: /Users/suvashsedhain/Desktop/90folds/train.flipped.1
-    test: /Users/suvashsedhain/Desktop/90folds/test.flipped.1
-    save: /Users/suvashsedhain/Desktop/90folds/model_noneighbor_%d_%.2f.1
+    train: /data/ssedhain/datasets/movielens/1M/90folds/train.flipped.1
+    test: /data/ssedhain/datasets/movielens/1M/90folds/test.flipped.1
+    save: /data/ssedhain/datasets/movielens/1M/models/autoencoder/new/model.1
 params:
     reg_bias: True
     lamda: 0.1
-    learn_rate: 0.0001
+    learn_rate: 0.1
     max_iter: 200
-    batch_size: 1000
+    batch_size: 500
     k : 5
 layers:
     1:
@@ -16,7 +16,7 @@ layers:
         partial: True
         type: input
     2:
-        activation: identity
+        activation: sigmoid
         num_nodes: 500
         partial: False
         type: hidden

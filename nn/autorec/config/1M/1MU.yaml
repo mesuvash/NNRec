@@ -1,7 +1,7 @@
 data:
-    train: /Users/suvashsedhain/Desktop/90folds/train.%d
-    test: /Users/suvashsedhain/Desktop/90folds/test.%d 
-    save: /Users/suvashsedhain/Desktop/90folds/model_noneighbor_%d_%.2f.%d
+    train: /Users/suvashsedhain/Desktop/90folds/train.flipped.1
+    test: /Users/suvashsedhain/Desktop/90folds/test.flipped.1
+    save: /Users/suvashsedhain/Desktop/90folds/umodel.1
 params:
     reg_bias: False
     beta: None
@@ -11,6 +11,7 @@ params:
     max_iter: [500]
     batch_size: 10000
     optimizer: rprop
+    num_threads: 16
 layers:
     1:
         activation: identity
