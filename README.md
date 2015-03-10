@@ -41,7 +41,7 @@ Models are defined in yaml configuration file. Configuration file consists of th
 Installation/Running
 ====================
 
-First you will need to build the cython modules. Build cython modules by running following command
+First, you will need to build the cython modules. Build cython modules by running
 * bash buildCython.sh 
 
 Running Autorec model
