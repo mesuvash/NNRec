@@ -41,7 +41,7 @@ class Sigmoid(Activation):
         return np.multiply(x, 1 - x)
 
     def binarize(self, x):
-        return x * (x > 0.5)
+        return 1.0 * (x > 0.5)
 
 
 class RELU(Activation):
@@ -82,4 +82,4 @@ class Tanh(Activation):
         return (1 - np.power(np.tanh(x), 2))
 
     def binarize(self, x):
-        return x * (x > 0)
+        return 1.0 * (x > 0)
