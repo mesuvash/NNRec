@@ -12,14 +12,14 @@ Dependencies
 
 Configuration
 =============
-All the models are defined in yaml configuration file. Configuration file consists of three section
+Models are defined in yaml configuration file. Configuration file consists of three sections
 * **data**:
-	In this section, we define the path of train/test file and path to store the model
+	In this section, we define data sources and model save path
 	- **train** : path of the training file
 	- **test** : path of the test file
 	- **save** : path for saving the model
 * **param**:
-	In this section, we define parameters for the network
+	In this section, we define network training parameters
 	- **lamda**: list of regularization paramter per each layer
 	- **max_iter**: maximum number of iteration
 	- **batch_size**: size of the batch
