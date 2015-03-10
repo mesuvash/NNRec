@@ -29,8 +29,8 @@ Models are defined in yaml configuration file. Configuration file consists of th
 	- **num_threads**: maximum number of threads to be used while doing some of the matrix operations (set it to number of CPU cores)
 * **layer**:
 	In this section, we define the network architecture. Layers are defined by layer index(starting from 1).
-	Note that, layers index should be in ascending order (For eg: 1, 2, 3).
-	Each layers is defined as 
+	Note that, layer index should be defined in ascending order (For eg: 1, 2, 3).
+	Each layer is defined as 
 	- Layer index:
 		+ **activation**: Type of activation function (identity, sigmoid, relu, nrelu, tanh)
 		+ **num_nodes**: number of nodes in the given layer
