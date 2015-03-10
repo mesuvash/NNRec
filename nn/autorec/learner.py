@@ -18,7 +18,6 @@ def train(config_path):
     shape = (None, nn.layers[0].num_units)
     train, test, cold = loadTrainTest(train_path, test_path,
                                       shape=shape)
-
     ae = AE(nn, modelArgs)
     evaluate = EvaluateNN(ae)
     theta = ae.nn.getFlattenParams()
