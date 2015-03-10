@@ -12,7 +12,7 @@ Dependencies
 
 Configuration
 =============
-All the models are defined in yaml configuration file. Configuraiton file consists of three section
+All the models are defined in yaml configuration file. Configuration file consists of three section
 * **data**:
 	In this section, we define the path of train/test file and path to store the model
 	- **train** : path of the training file
@@ -23,8 +23,8 @@ All the models are defined in yaml configuration file. Configuraiton file consis
 	- **lamda**: list of regularization paramter per each layer
 	- **max_iter**: maximum number of iteration
 	- **batch_size**: size of the batch
-	- **optimizer**: Choice of the optimiezer (lbfgs, rprop, rmsprop)
-	- **reg_bias**:  whether to regularise bias or not
+	- **optimizer**: Choice of the optimizer (lbfgs, rprop, rmsprop)
+	- **reg_bias**:  whether to regularize bias or not
 	- **beta**: sparsity control parameter
 	- **num_threads**: maximum number of threads to be used while doing some of the matrix operations (set it to number of CPU cores)
 * **layer**:
