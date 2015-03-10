@@ -53,5 +53,7 @@ Running RBMCF model
 * PYTHONPATH=\<NNRec_PATH\> python learner.py -c \<CONF_PATH\>
 
 
-
+Contact
+=======
+If you have any queries, please contact me at mesuvash@gmail.com.
 
