@@ -13,12 +13,12 @@ def train(config_path):
     train_path, test_path, save_path = NetworkConfigParser.getDataInfo(
         config_path)
     print nn
+    print modelArgs
     # TODO : Arguments
     num_hid = nn.layers[1].num_units
     shape = (None, nn.layers[0].num_units)
     train, test, cold = loadTrainTest(train_path, test_path,
                                       shape=shape)
-
     ae = AE(nn, modelArgs)
     evaluate = EvaluateNN(ae)
     theta = ae.nn.getFlattenParams()
