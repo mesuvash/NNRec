@@ -15,7 +15,7 @@ class ModelArgs(object):
     """docstring for ModelArgs"""
 
     def __init__(self, learn_rate=0.001, lamda=1.0, regularize_bias=True,
-                 isDenoising=False, noisePercent=0.0, beta=None, momentum=0.8,
+                 isDenoising=False, noisePercent=0.0, beta=None, momentum=0.0,
                  num_threads=16, mean=0.0, max_iter=200, optimizer=None,
                  batch_size=20000):
         super(ModelArgs, self).__init__()
