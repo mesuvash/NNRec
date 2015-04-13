@@ -1,16 +1,17 @@
 data:
-    train: /Users/suvashsedhain/Desktop/90folds/train.flipped.1
-    test: /Users/suvashsedhain/Desktop/90folds/test.flipped.1
-    save: /Users/suvashsedhain/Desktop/90folds/model.1
+    train: /data/ssedhain/datasets/movielens/1M/90folds/train.flipped.1
+    test: /data/ssedhain/datasets/movielens/1M/90folds/test.flipped.1
+    save: /data/ssedhain/datasets/movielens/1M/models/autoencoder/simodel.1
 params:
     reg_bias: False
+    # beta: 100.0
     beta: None
-    lamda: [200.0,200.0]
+    lamda: [200.0, 200.0]
     mean_normalization: False
     pretraining: False
-    max_iter: [500]
+    max_iter: [300]
     batch_size: 10000
-    optimizer: lbfgs
+    optimizer: rprop
     num_threads: 16
 layers:
     1:
@@ -23,7 +24,8 @@ layers:
         num_nodes: 500
         partial: False
         type: hidden
-        binary: True
+        # sparsity: 0.3
+        # binary: True
     3:
         activation: identity
         num_nodes: 6040
