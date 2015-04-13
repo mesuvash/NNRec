@@ -104,3 +104,36 @@ def loadTrainTest(train_path, test_path, shape=None):
     test, cold = loadTestData(d, test_path)
     train = d.R.copy()
     return train, test, cold
+
+
+def loadTrainTestandMapping(train_path, test_path, shape=None):
+    d = Data()
+    d.import_ratings(train_path, shape)
+    test, cold = loadTestData(d, test_path)
+    train = d.R.copy()
+    return train, test, cold, d.users, d.items
+
+
+def loadSideInformation(keys, file_path, delim="\t", hasScore=True):
+    I, J, V = [], [], []
+    infomapping = {}
+    count = 0
+    with open(file_path) as fp:
+        for line in fp:
+            if hasScore:
+                _id, info, score = line.strip().split(delim)
+            else:
+                _id, info = line.strip().split(delim)
+            if info not in infomapping:
+                infomapping[info] = count
+                count += 1
+            if _id in keys:
+                I.append(keys[_id])
+                J.append(infomapping[info])
+                if hasScore:
+                    V.append(float(score))
+                else:
+                    V.append(1.0)
+    R = scipy.sparse.coo_matrix(
+        (V, (I, J)), shape=(len(keys), len(infomapping)))
+    return R.tocsr()
