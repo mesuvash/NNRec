@@ -93,6 +93,9 @@ class AE:
                 forward *= (1 - self.nn.layers[i].dropout)
             inputActivation = self.nn.layers[
                 i + 1].activation.activation(forward + self.nn.biases[i])
+            if self.nn.layers[i + 1].isBinary():
+                inputActivation = self.nn.layers[
+                    i + 1].activation.binarize(inputActivation)
         return inputActivation
 
     def saveModel(self, path):
