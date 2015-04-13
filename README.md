@@ -12,25 +12,25 @@ Dependencies
 
 Configuration
 =============
-All the models are defined in yaml configuration file. Configuraiton file consists of three section
+Models are defined in yaml configuration file. Configuration file consists of three sections
 * **data**:
-	In this section, we define the path of train/test file and path to store the model
+	In this section, we define data sources and model save path
 	- **train** : path of the training file
 	- **test** : path of the test file
 	- **save** : path for saving the model
 * **param**:
-	In this section, we define parameters for the network
+	In this section, we define network training parameters
 	- **lamda**: list of regularization paramter per each layer
 	- **max_iter**: maximum number of iteration
 	- **batch_size**: size of the batch
-	- **optimizer**: Choice of the optimiezer (lbfgs, rprop, rmsprop)
-	- **reg_bias**:  whether to regularise bias or not
+	- **optimizer**: Choice of the optimizer (lbfgs, rprop, rmsprop)
+	- **reg_bias**:  whether to regularize bias or not
 	- **beta**: sparsity control parameter
 	- **num_threads**: maximum number of threads to be used while doing some of the matrix operations (set it to number of CPU cores)
 * **layer**:
 	In this section, we define the network architecture. Layers are defined by layer index(starting from 1).
-	Note that, layers index should be in ascending order (For eg: 1, 2, 3).
-	Each layers is defined as 
+	Note that, layer index should be defined in ascending order (For eg: 1, 2, 3).
+	Each layer is defined as 
 	- Layer index:
 		+ **activation**: Type of activation function (identity, sigmoid, relu, nrelu, tanh)
 		+ **num_nodes**: number of nodes in the given layer
@@ -41,7 +41,7 @@ All the models are defined in yaml configuration file. Configuraiton file consis
 Installation/Running
 ====================
 
-First you will need to build the cython modules. Build cython modules by running following command
+First, you will need to build the cython modules. Build cython modules by running
 * bash buildCython.sh 
 
 Running Autorec model
@@ -53,5 +53,7 @@ Running RBMCF model
 * PYTHONPATH=\<NNRec_PATH\> python learner.py -c \<CONF_PATH\>
 
 
-
+Contact
+=======
+If you have any queries, please contact me at mesuvash@gmail.com.
 
