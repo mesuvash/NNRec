@@ -94,3 +94,63 @@ class EvaluateRBM(EvaluateNN):
                         np.power(cold_err, 2).sum()) / total_instances)
         mae = (err.sum() + cold_err.sum()) / total_instances
         return [rmse, mae]
+
+
+class EvaluateJointAE(Evaluate):
+
+    """docstring for EvaluateRBM"""
+
+    def __init__(self, predictor, default=3.0):
+        super(EvaluateJointAE, self).__init__(predictor)
+
+    def calculateRMSEandMAE(self, test, ufeats, ifeats,
+                            cold_ratings=None, default_rating=3.0):
+        mae = 0.0
+        rmse = 0.0
+        for i in range(test.shape[1]):
+            user, item, rating = test[:, i]
+            prediction = self.predictor.predict(
+                int(user), int(item), ufeats, ifeats)
+            error = np.fabs(rating - prediction)
+            mae += error
+            rmse += np.power(error, 2)
+        cold_err = []
+        if cold_ratings:
+            for rating in cold_ratings:
+                cold_err.append(np.fabs(rating - default_rating))
+        cold_err = np.array(cold_err)
+        total_instances = test.shape[1] + len(cold_err)
+
+        mae = (mae + cold_err.sum()) / total_instances
+        rmse = np.sqrt((rmse + np.power(cold_err, 2).sum()) / total_instances)
+        return [rmse, mae]
+
+
+class EvaluateJointAE1(Evaluate):
+
+    """docstring for EvaluateRBM"""
+
+    def __init__(self, predictor, default=3.0):
+        super(EvaluateJointAE1, self).__init__(predictor)
+
+    def calculateRMSEandMAE(self, test, ufeats, ifeats, ufeats1, ifeats1,
+                            cold_ratings=None, default_rating=3.0):
+        mae = 0.0
+        rmse = 0.0
+        for i in range(test.shape[1]):
+            user, item, rating = test[:, i]
+            prediction = self.predictor.predict(
+                int(user), int(item), ufeats, ifeats, ufeats1, ifeats1)
+            error = np.fabs(rating - prediction)
+            mae += error
+            rmse += np.power(error, 2)
+        cold_err = []
+        if cold_ratings:
+            for rating in cold_ratings:
+                cold_err.append(np.fabs(rating - default_rating))
+        cold_err = np.array(cold_err)
+        total_instances = test.shape[1] + len(cold_err)
+
+        mae = (mae + cold_err.sum()) / total_instances
+        rmse = np.sqrt((rmse + np.power(cold_err, 2).sum()) / total_instances)
+        return [rmse, mae]
