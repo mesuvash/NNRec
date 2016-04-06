@@ -79,7 +79,7 @@ class Tanh(Activation):
         return np.tanh(x)
 
     def derivative(self, x):
-        return (1 - np.power(np.tanh(x), 2))
+        return (1 - np.power(x, 2))
 
     def binarize(self, x):
         return 1.0 * (x > 0)
