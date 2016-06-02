@@ -173,38 +173,35 @@ def getCostDeriv(theta, user_item_rating, NN,
         cost += loss
 
     if not modelArg.regularize_bias:
-        weight_decay = 0.5 *\
-            reduce(
-                lambda x, y: x + y, map(lambda z:
-                                        np.power(
-                                            weights[z], 2).sum() *
-                                        modelArg.lamda[z],
-                                        range(len(weights))))
+        weight_decay = reduce(
+            lambda x, y: x + y, map(lambda z:
+                                    np.power(
+                                        weights[z], 2).sum() *
+                                    modelArg.lamda[z],
+                                    range(len(weights))))
     else:
-        weight_decay = 0.5 *\
-            reduce(
-                lambda x, y: x + y, map(lambda z:
-                                        np.power(
-                                            weights[z], 2).sum() *
-                                        modelArg.lamda[z],
-                                        range(len(weights))))
-        weight_decay = 0.5 *\
-            reduce(
-                lambda x, y: x + y, map(lambda z:
-                                        np.power(
-                                            biases[z], 2).sum() *
-                                        modelArg.lamda[z],
-                                        range(len(biases))))
+        weight_decay = reduce(
+            lambda x, y: x + y, map(lambda z:
+                                    np.power(
+                                        weights[z], 2).sum() *
+                                    modelArg.lamda[z],
+                                    range(len(weights))))
+        weight_decay = reduce(
+            lambda x, y: x + y, map(lambda z:
+                                    np.power(
+                                        biases[z], 2).sum() *
+                                    modelArg.lamda[z],
+                                    range(len(biases))))
     cost += weight_decay
 
     for i in range(len(dWeights)):
         # dWeights[i] += modelArg.lamda * weights[i]
-        dWeights[i] += modelArg.lamda[i] * weights[i]
+        dWeights[i] += 2 * modelArg.lamda[i] * weights[i]
 
     if modelArg.regularize_bias:
         for i in range(len(dBiases)):
             # dBiases[i] += modelArg.lamda * biases[i]
-            dBiases[i] += modelArg.lamda[i] * biases[i]
+            dBiases[i] += 2 * modelArg.lamda[i] * biases[i]
 
     theta_grad = np.concatenate(map(lambda x: x.flatten(), dWeights + dBiases))
     return [cost, theta_grad]
@@ -253,36 +250,33 @@ def getCostDerivBatch(theta, user_item_rating, NN,
         cost += loss
 
         if not modelArg.regularize_bias:
-            weight_decay = 0.5 *\
-                reduce(
-                    lambda x, y: x + y, map(lambda z:
-                                            np.power(
-                                                weights[z], 2).sum() *
-                                            modelArg.lamda[z],
-                                            range(len(weights))))
+            weight_decay = reduce(
+                lambda x, y: x + y, map(lambda z:
+                                        np.power(
+                                            weights[z], 2).sum() *
+                                        modelArg.lamda[z],
+                                        range(len(weights))))
         else:
-            weight_decay = 0.5 *\
-                reduce(
-                    lambda x, y: x + y, map(lambda z:
-                                            np.power(
-                                                weights[z], 2).sum() *
-                                            modelArg.lamda[z],
-                                            range(len(weights))))
-            weight_decay = 0.5 *\
-                reduce(
-                    lambda x, y: x + y, map(lambda z:
-                                            np.power(
-                                                biases[z], 2).sum() *
-                                            modelArg.lamda[z],
-                                            range(len(biases))))
+            weight_decay = reduce(
+                lambda x, y: x + y, map(lambda z:
+                                        np.power(
+                                            weights[z], 2).sum() *
+                                        modelArg.lamda[z],
+                                        range(len(weights))))
+            weight_decay = reduce(
+                lambda x, y: x + y, map(lambda z:
+                                        np.power(
+                                            biases[z], 2).sum() *
+                                        modelArg.lamda[z],
+                                        range(len(biases))))
         cost += weight_decay
 
         for i in range(len(dWeights)):
-            dWeights[i] += modelArg.lamda[i] * weights[i]
+            dWeights[i] += 2 * modelArg.lamda[i] * weights[i]
 
         if modelArg.regularize_bias:
             for i in range(len(dBiases)):
-                dBiases[i] += modelArg.lamda[i] * biases[i]
+                dBiases[i] += 2 * modelArg.lamda[i] * biases[i]
 
         theta_grad = np.concatenate(
             map(lambda x: x.flatten(), dWeights + dBiases))
@@ -321,23 +315,20 @@ def updateSGD(user_item_rating, NN, modelArg, counter, batch_size,
         cost += loss
 
         if not modelArg.regularize_bias:
-            weight_decay = 0.5 *\
-                reduce(
+            weight_decay = reduce(
                     lambda x, y: x + y, map(lambda z:
                                             np.power(
                                                 weights[z], 2).sum() *
                                             modelArg.lamda[z],
                                             range(len(weights))))
         else:
-            weight_decay = 0.5 *\
-                reduce(
+            weight_decay = reduce(
                     lambda x, y: x + y, map(lambda z:
                                             np.power(
                                                 weights[z], 2).sum() *
                                             modelArg.lamda[z],
                                             range(len(weights))))
-            weight_decay = 0.5 *\
-                reduce(
+            weight_decay = reduce(
                     lambda x, y: x + y, map(lambda z:
                                             np.power(
                                                 biases[z], 2).sum() *
@@ -347,13 +338,13 @@ def updateSGD(user_item_rating, NN, modelArg, counter, batch_size,
 
         for i in range(len(dWeights)):
             # dWeights[i] += modelArg.lamda * weights[i]
-            dWeights[i] += modelArg.lamda[i] * weights[i]
+            dWeights[i] += 2 * modelArg.lamda[i] * weights[i]
 
         if modelArg.regularize_bias:
             for i in range(len(dBiases)):
                 # dBiases[i] += modelArg.lamda * biases[i]
                 dBiases[i] = dBiases[i].reshape(dBiases_old[i].shape)
-                dBiases[i] += modelArg.lamda[i] * biases[i]
+                dBiases[i] += 2 * modelArg.lamda[i] * biases[i]
 
         for i in range(len(weights)):
             temp_wderiv = (
@@ -400,23 +391,20 @@ def updateAdagrad(user_item_rating, NN, modelArg, counter, batch_size,
                                         dWeights, dBiases, NN, modelArg)
         cost += loss
         if not modelArg.regularize_bias:
-            weight_decay = 0.5 *\
-                reduce(
+            weight_decay = reduce(
                     lambda x, y: x + y, map(lambda z:
                                             np.power(
                                                 weights[z], 2).sum() *
                                             modelArg.lamda[z],
                                             range(len(weights))))
         else:
-            weight_decay = 0.5 *\
-                reduce(
+            weight_decay = reduce(
                     lambda x, y: x + y, map(lambda z:
                                             np.power(
                                                 weights[z], 2).sum() *
                                             modelArg.lamda[z],
                                             range(len(weights))))
-            weight_decay = 0.5 *\
-                reduce(
+            weight_decay = reduce(
                     lambda x, y: x + y, map(lambda z:
                                             np.power(
                                                 biases[z], 2).sum() *
@@ -426,13 +414,13 @@ def updateAdagrad(user_item_rating, NN, modelArg, counter, batch_size,
 
         for i in range(len(dWeights)):
             # dWeights[i] += modelArg.lamda * weights[i]
-            dWeights[i] += modelArg.lamda[i] * weights[i]
+            dWeights[i] += 2 * modelArg.lamda[i] * weights[i]
 
         if modelArg.regularize_bias:
             for i in range(len(dBiases)):
                 # dBiases[i] += modelArg.lamda * biases[i]
                 dBiases[i] = dBiases[i].reshape(dBiases_old[i].shape)
-                dBiases[i] += modelArg.lamda[i] * biases[i]
+                dBiases[i] += 2 * modelArg.lamda[i] * biases[i]
 
         if counter.count == 1:
             dWeights_old[i] += np.power(dWeights[i], 2)

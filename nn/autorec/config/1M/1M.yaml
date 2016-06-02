@@ -5,7 +5,7 @@ data:
 params:
     reg_bias: False
     beta: None
-    lamda: [200.0,200.0]
+    lamda: [100.0,100.0]
     mean_normalization: False
     pretraining: False
     max_iter: [500]

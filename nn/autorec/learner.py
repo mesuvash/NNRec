@@ -37,7 +37,7 @@ def train(config_path):
         if k % 5 == 0:
             ae.setParameters(theta)
             rmse, mae = evaluate.calculateRMSEandMAE(train, test)
-            print "Fold :%d Final Train RMSE: %f Train MAE: %f" % (i,
+            print "Fold :%d Test RMSE: %f Test MAE: %f" % (i,
                                                                    rmse, mae)
         if k > modelArgs.max_iter[0]:
             break
