@@ -52,6 +52,15 @@ Running RBMCF model
 * cd nn/cfrbm
 * PYTHONPATH=\<NNRec_PATH\> python learner.py -c \<CONF_PATH\>
 
+Data
+====================
+This program expects input in tab separated format.
+
+For U-AutoRec:
+* \<user\>\\t\<item\>\\t\<rating\>
+
+For I-AutoRec
+* \<item\>\\t\<user\>\\t\<rating\>
 
 Contact
 =======
